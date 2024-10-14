@@ -6,16 +6,20 @@
 image: gitpod/workspace-postgres
 
 tasks:
-  - name: Set environment Variables
+  - name: Set Aliases
     command: |
+      echo "Setting Aliases"
       alias dk="docker-compose"
       alias dkl="docker-compose logs -f"
       alias dkr="docker-compose restart"
+      echo "Finish setting Aliases"
 
   - name: Setting Environment Variables
     command: |
+      echo "Setting Environment Variables"
       eval $(gp env -e USER=gitpod)
       eval $(gp env -e DATABASE=eventhub_db)
+      echo "Finish setting Environment Variables"
 
   - name: run back-end
     before: npm install pg dotenv
