@@ -1,4 +1,3 @@
-const { process_params } = require("express/lib/router");
 const { Pool } = require("pg");
 
 const pool = new Pool({
