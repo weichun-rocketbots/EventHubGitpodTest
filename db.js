@@ -1,9 +1,10 @@
+const { process_params } = require("express/lib/router");
 const { Pool } = require("pg");
 
 const pool = new Pool({
-  user: "gitpod",
+  user: process.env.USER,
   host: "localhost",
-  database: "eventhub_db",
+  database: process.env.DATABASE,
   password: "",
   port: 5432,
 });
