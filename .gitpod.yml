@@ -14,36 +14,36 @@ tasks:
       alias dkr="docker-compose restart"
       echo "Finish setting Aliases"
 
-  # - name: Setting Environment Variables
-  #   command: |
-  #     echo "Setting Environment Variables"
-  #     eval $(gp env -e USER=gitpod)
-  #     eval $(gp env -e DATABASE=eventhub_db)
-  #     echo "Finish setting Environment Variables"
+  - name: Setting Environment Variables
+    command: |
+      echo "Setting Environment Variables"
+      eval $(gp env -e USER=gitpod)
+      eval $(gp env -e DATABASE=eventhub_db)
+      echo "Finish setting Environment Variables"
 
-  # - name: run back-end
-  #   before: npm install pg dotenv
-  #   init: npm install
-  #   command: npm start
-  #   openMode: split-left
+  - name: run back-end
+    before: npm install pg dotenv
+    init: npm install
+    command: npm start
+    openMode: split-left
 
-  # - name: run front-end
-  #   before: cd client
-  #   init: npm install && echo "REACT_APP_API_URL=$(gp url 3000)" > .env
-  #   command: npm start
-  #   openMode: split-right
+  - name: run front-end
+    before: cd client
+    init: npm install && echo "REACT_APP_API_URL=$(gp url 3000)" > .env
+    command: npm start
+    openMode: split-right
     
-  # - name: create tables in db
-  #   init: sleep 5; './init-db.sh'
+  - name: create tables in db
+    init: sleep 5; './init-db.sh'
 
-# ports:
-#   - name: front-end
-#     port: 3000
-#     onOpen: open-preview
-#   - name: back-end
-#     port: 3001
-#     onOpen: ignore
-#     visibility: public
-#   - name: database
-#     port: 5432
-#     onOpen: ignore
+ports:
+  - name: front-end
+    port: 3000
+    onOpen: open-preview
+  - name: back-end
+    port: 3001
+    onOpen: ignore
+    visibility: public
+  - name: database
+    port: 5432
+    onOpen: ignore
